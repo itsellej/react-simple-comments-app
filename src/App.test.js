@@ -2,6 +2,7 @@ import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import App from "./App";
+import ApprovalCard from "./components/ApprovalCard";
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
@@ -13,12 +14,9 @@ test("renders without crashing", () => {
   shallow(<App />);
 });
 
-test("expect four instances of ApprovalCard to be rendered", () => {
+test("displays number of comments", () => {
   const wrapper = shallow(<App />);
-  const app = findByTestAttr(wrapper, "App");
-  expect(app.html()).toContain("Elle");
-  expect(app.html()).toContain("Hello");
-  expect(app.html()).toContain("Simon");
-  expect(app.html()).toContain("Sally");
-  expect(app.html()).toContain("Julian");
+  const numberOfComments = findByTestAttr(wrapper, "number-of-comments");
+  expect(numberOfComments.text()).toContain("Number of comments:");
+  expect(numberOfComments.text()).toContain("4");
 });

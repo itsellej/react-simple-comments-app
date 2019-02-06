@@ -14,6 +14,11 @@ export default class App extends Component {
       ]
     };
   }
+
+  numberOfComments = () => {
+    return this.state.comments.length;
+  };
+
   render() {
     const { comments } = this.state;
 
@@ -26,6 +31,9 @@ export default class App extends Component {
     });
     return (
       <div className="App" data-test="App">
+        <p data-test="number-of-comments">
+          Number of comments: {this.numberOfComments()}
+        </p>
         {showComments}
       </div>
     );
