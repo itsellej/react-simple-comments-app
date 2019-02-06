@@ -5,7 +5,7 @@ import faker from "faker";
 class App extends Component {
   render() {
     return (
-      <div className="App ui container comments">
+      <div className="App">
         <CommentDetail />
       </div>
     );

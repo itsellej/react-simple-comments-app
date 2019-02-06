@@ -25,6 +25,12 @@ test("renders without crashing", () => {
 test("renders an avatar", () => {
   const wrapper = setup();
   const avatar = findByTestAttr(wrapper, "avatar-image");
-  console.log(avatar.debug());
   expect(avatar.prop("src")).toContain("jpg");
+});
+
+test("renders an author name", () => {
+  const wrapper = setup();
+  const author = findByTestAttr(wrapper, "author");
+  console.log(author.debug());
+  expect(typeof author.text()).toBe("string");
 });
