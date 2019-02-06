@@ -37,8 +37,15 @@ test("renders an author name", () => {
 test("renders a date", () => {
   const wrapper = setup();
   const date = findByTestAttr(wrapper, "date");
-  console.log(date.debug());
   expect(date.text()).toContain("GMT");
   expect(date.text()).toContain(":");
   expect(date.text()).toContain("20");
+});
+
+test("renders comment text", () => {
+  const wrapper = setup();
+  const text = findByTestAttr(wrapper, "text");
+  console.log(text.debug());
+  expect(text.text().length).toBeGreaterThan(5);
+  expect(typeof text.text()).toEqual("string");
 });

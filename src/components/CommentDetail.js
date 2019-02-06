@@ -43,7 +43,9 @@ export default class CommentDetail extends React.Component {
                 {this.displayDate()}
               </span>
             </div>
-            <div className="text">comment here</div>
+            <div className="text" data-test="text">
+              {this.displayCommentText()}
+            </div>
           </div>
         </div>
       </div>
