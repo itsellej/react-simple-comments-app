@@ -22,6 +22,17 @@ test("renders without crashing", () => {
   shallow(<CommentDetail />);
 });
 
+test("renders with props without crashing", () => {
+  shallow(
+    <CommentDetail
+      image="./test_img/test_avatar.jpg"
+      author="Elle"
+      date="6th February 2019"
+      sentence="This is my comment"
+    />
+  );
+});
+
 test("renders an avatar", () => {
   const wrapper = setup();
   const avatar = findByTestAttr(wrapper, "avatar-image");

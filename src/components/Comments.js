@@ -7,6 +7,12 @@ export default class Comments extends React.Component {
     this.state = {};
   }
   render() {
-    return <div />;
+    return (
+      <div>
+        <CommentDetail />
+        <CommentDetail />
+        <CommentDetail />
+      </div>
+    );
   }
 }
