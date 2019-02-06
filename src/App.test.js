@@ -17,17 +17,29 @@ test("renders without crashing", () => {
 
 test("renders ApprovalCard based on number of items in this.state.comments", () => {
   const wrapper = shallow(<App />);
-  expect(wrapper.find("ApprovalCard").length).toBe(4);
+  const instance = wrapper.instance();
+  const comments = instance.state.comments.length;
+  if (comments > 1) {
+    expect(wrapper.find("ApprovalCard").length).toBe(comments);
+  }
 });
 
 test("renders CommentDetail instances based number of ApprovalCard instances", () => {
   const wrapper = shallow(<App />);
-  expect(wrapper.find("CommentDetail").length).toBe(4);
+  const instance = wrapper.instance();
+  const comments = instance.state.comments.length;
+  if (comments > 1) {
+    expect(wrapper.find("CommentDetail").length).toBe(comments);
+  }
 });
 
 test("displays number of comments", () => {
   const wrapper = shallow(<App />);
+  const instance = wrapper.instance();
+  const comments = instance.state.comments.length;
   const numberOfComments = findByTestAttr(wrapper, "number-of-comments");
-  expect(numberOfComments.text()).toContain("Number of comments:");
-  expect(numberOfComments.text()).toContain("4");
+  if (comments > 1) {
+    expect(numberOfComments.text()).toContain("Number of comments:");
+    expect(numberOfComments.text()).toContain(comments);
+  }
 });
