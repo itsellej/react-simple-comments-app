@@ -14,7 +14,17 @@ const setup = (props = {}, state = null) => {
   return wrapper;
 };
 
+const findByTestAttr = (wrapper, val) => {
+  return wrapper.find(`[data-test='${val}']`);
+};
+
 test("renders without crashing", () => {
-  const wrapper = setup(); //renders app. Checks if it renders without crashing
-  console.log(wrapper.debug()); //console log DOM
+  shallow(<CommentDetail />);
+});
+
+test("renders an avatar", () => {
+  const wrapper = setup();
+  const avatar = findByTestAttr(wrapper, "avatar-image");
+  console.log(avatar.debug());
+  expect(avatar.prop("src")).toContain("jpg");
 });
