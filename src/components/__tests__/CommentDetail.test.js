@@ -31,6 +31,14 @@ test("renders an avatar", () => {
 test("renders an author name", () => {
   const wrapper = setup();
   const author = findByTestAttr(wrapper, "author");
-  console.log(author.debug());
   expect(typeof author.text()).toBe("string");
+});
+
+test("renders a date", () => {
+  const wrapper = setup();
+  const date = findByTestAttr(wrapper, "date");
+  console.log(date.debug());
+  expect(date.text()).toContain("GMT");
+  expect(date.text()).toContain(":");
+  expect(date.text()).toContain("20");
 });

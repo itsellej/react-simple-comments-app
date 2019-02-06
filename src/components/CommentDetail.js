@@ -15,6 +15,14 @@ export default class CommentDetail extends React.Component {
     return this.props.author || faker.name.firstName();
   };
 
+  displayDate = () => {
+    return this.props.date || faker.date.past().toString();
+  };
+
+  displayCommentText = () => {
+    return this.props.text || faker.lorem.sentence();
+  };
+
   render() {
     return (
       <div className="ui container comments">
@@ -30,6 +38,12 @@ export default class CommentDetail extends React.Component {
             <a href="/" className="author" data-test="author">
               {this.displayAuthor()}
             </a>
+            <div className="metadata">
+              <span className="date" data-test="date">
+                {this.displayDate()}
+              </span>
+            </div>
+            <div className="text">comment here</div>
           </div>
         </div>
       </div>
