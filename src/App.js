@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import Comments from "./components/Comments";
+import CommentDetail from "./components/CommentDetail";
+import ApprovalCard from "./components/ApprovalCard";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Comments />
+        <ApprovalCard>
+          <CommentDetail />
+        </ApprovalCard>
       </div>
     );
   }
