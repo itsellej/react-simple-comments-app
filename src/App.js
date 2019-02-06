@@ -19,12 +19,25 @@ export default class App extends Component {
     return this.state.comments.length;
   };
 
+  handleDelete = id => {
+    const comments = this.state.comments.filter(comment => comment.id !== id);
+
+    this.setState({ comments: comments });
+  };
+
   render() {
     const { comments } = this.state;
 
     const showComments = comments.map(comment => {
       return (
-        <ApprovalCard key={comment.id}>
+        <ApprovalCard
+          key={comment.id}
+          id={comment.id}
+          onClick={() => {
+            this.handleDelete(comment.id);
+          }}
+          data-test="approval-card"
+        >
           <CommentDetail {...comment} />
         </ApprovalCard>
       );
