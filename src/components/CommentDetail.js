@@ -1,40 +1,44 @@
 import React from "react";
 import faker from "faker";
 
+function displayAvatar(props) {
+  return props.avatar || faker.image.avatar();
+}
+
+function displayAuthor(props) {
+  return props.author || faker.name.firstName();
+}
+
+function displayDate(props) {
+  return props.date || faker.date.past().toString();
+}
+
+function displayCommentText(props) {
+  return props.text || faker.lorem.sentence();
+}
+
 const CommentDetail = props => {
-  function displayAvatar() {
-    return props.avatar || faker.image.avatar();
-  }
-
-  function displayAuthor() {
-    return props.author || faker.name.firstName();
-  }
-
-  function displayDate() {
-    return props.date || faker.date.past().toString();
-  }
-
-  function displayCommentText() {
-    return props.text || faker.lorem.sentence();
-  }
-
   return (
     <div className="ui container comments">
       <div className="comment">
         <a href="/" className="avatar">
-          <img alt="avatar" data-test="avatar-image" src={displayAvatar()} />
+          <img
+            alt="avatar"
+            data-test="avatar-image"
+            src={displayAvatar(props)}
+          />
         </a>
         <div className="content">
           <a href="/" className="author" data-test="author">
-            {displayAuthor()}
+            {displayAuthor(props)}
           </a>
           <div className="metadata">
             <span className="date" data-test="date">
-              {displayDate()}
+              {displayDate(props)}
             </span>
           </div>
           <div className="text" data-test="text">
-            {displayCommentText()}
+            {displayCommentText(props)}
           </div>
         </div>
       </div>
